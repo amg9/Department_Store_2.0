@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, } from 'semantic-ui-react';
+import { Header, Button, } from 'semantic-ui-react';
 import axios from 'axios';
 import { Link, } from 'react-router-dom';
 
@@ -17,14 +17,13 @@ class Departments extends React.Component {
     return (
       <div style={styles.container}>
         <Header as="h1">Departments</Header>
+        <Button as={Link} to="/departments/new" color="violet">
+          Add Department
+        </Button>
+        <br />
         { this.state.departments.map( dep => 
           <Link to={`/departments/${dep.id}`}>
-            <Header 
-              as="h2" 
-              key={dep.id}
-              >
-              {dep.name}
-            </Header>
+            <Header as="h2" key={dep.id}>{dep.name}</Header>
           </Link>
         )}
       </div>      
