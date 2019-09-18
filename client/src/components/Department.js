@@ -29,6 +29,13 @@ class Department extends React.Component {
       })
   }
 
+  removeDep = () => {
+    axios.delete(`/api/departments/${this.state.department.id}`)
+      .then( res => {
+        this.props.history.push('/departments')
+      })
+  }
+
   render() {
     return (
       <>
@@ -39,9 +46,8 @@ class Department extends React.Component {
           : 
             null 
         }
-        <Button onClick={this.toggleEdit} color="violet">
-          Edit Department
-        </Button>
+        <Button icon="pencil" onClick={this.toggleEdit}/>
+        <Button icon="trash" onClick={this.removeDep}/>
       </>
     );
   };

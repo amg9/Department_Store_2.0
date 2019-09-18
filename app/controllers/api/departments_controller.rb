@@ -27,7 +27,7 @@ class Api::DepartmentsController < ApplicationController
   end
 
   def destroy
-    @product.destroy
+    @department.destroy
   end
 
   private

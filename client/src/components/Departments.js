@@ -22,8 +22,8 @@ class Departments extends React.Component {
         </Button>
         <br />
         { this.state.departments.map( (dep) => 
-          <Link to={`/departments/${dep.id}`}>
-            <Header as="h2" key={dep.id}>{dep.name}</Header>
+          <Link to={`/departments/${dep.id}`} key={dep.id}>
+            <Header as="h2">{dep.name}</Header>
           </Link>
         )}
       </div>      
