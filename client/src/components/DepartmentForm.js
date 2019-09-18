@@ -5,23 +5,36 @@ import axios from 'axios';
 class DepartmentForm extends React.Component {
   state = { name: "", }
 
+  componentDidMount() {
+    if (this.props)
+      this.setState({ name: this.props.name })
+  }
+
   handleChange = (e) => {
     this.setState({ name: e.target.value, })
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const department = {...this.state};
-    axios.post('/api/departments', department)
-      .then( res => {
-        this.props.history.push('/departments')
-      })
+    if (this.props.id) {
+      this.props.updateDep(this.state.name)
+    } else {
+      axios.post('/api/departments', this.state.name)
+        .then( res => {
+          this.props.history.push('/departments')
+        })
+    }
   }
 
   render() {
     return (
       <>
-        <Header as="h1">Add a Department</Header>
+        { 
+          this.props.name ? 
+            <Header as="h2">Edit Department</Header>
+          :
+            <Header as="h1">Add a Department</Header>            
+        }
         <Form onSubmit={this.handleSubmit}>
           <Form.Input 
             label="Name"
