@@ -1,8 +1,8 @@
 import React from 'react';
 import { Header, Button, } from 'semantic-ui-react';
 import axios from 'axios';
-// import { Link, } from 'react-router-dom';
-import DepartmentForm from './DepartmentForm'
+import DepartmentForm from './DepartmentForm';
+import { Link, } from 'react-router-dom';
 
 class Department extends React.Component {
   state = { 
@@ -48,6 +48,9 @@ class Department extends React.Component {
         }
         <Button icon="pencil" onClick={this.toggleEdit}/>
         <Button icon="trash" onClick={this.removeDep}/>
+        <Link to={`/${this.state.department.id}/products`}>
+          <Button color="violet">Show Products</Button>
+        </Link>
       </>
     );
   };
