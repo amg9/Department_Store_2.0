@@ -5,24 +5,41 @@ import axios from 'axios';
 class ProductForm extends React.Component {
   state = { name: "", price: null, description: "", }
 
+  componentDidMount() {
+    const { name, price, description, } = this.props
+    this.setState({ name, price, description, })
+  }
+
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  handleSubmit = (e) => {
-    const { department_id } = this.props.match.params
-    e.preventDefault()
-    axios.post(`/api/departments/${department_id}/products`, this.state)
-      .then( res => {
-        this.props.history.push(`/${department_id}/products`)
-      })
+  handleSubmit = () => {
+    const { department_id, id, toggleEdit, } = this.props
+    if (id) {
+      axios.put(`/api/departments/${department_id}/products/${id}`, this.state)
+        .then(
+          toggleEdit()
+        )
+    } else {
+      const { department_id, } = this.props.match.params
+      axios.post(`/api/departments/${department_id}/products`, this.state)
+        .then(
+          this.props.history.push(`/${department_id}/products`)
+        )
+    }
   }
 
   render() {
     const { name, price, description, } = this.state
     return (
       <>
-        <Header as="h1">Add a Product</Header>
+        { 
+          this.props.name ? 
+            <Header as="h2">Edit Product</Header> 
+          :
+            <Header as="h1">Add a Product</Header>
+        }
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
             <Form.Input

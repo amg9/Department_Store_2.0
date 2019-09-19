@@ -20,7 +20,7 @@ class Api::ProductsController < ApplicationController
   end
 
   def update
-    if @product.update
+    if @product.update(product_params)
       render json: @product
     else
       render json: @product.errors, status: 422
