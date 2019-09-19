@@ -34,6 +34,7 @@ class Department extends React.Component {
       .then( res => {
         this.props.history.push('/departments')
       })
+    // it can delete data I create but not seeded data and I don't know why
   }
 
   render() {

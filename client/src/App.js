@@ -11,9 +11,10 @@ import DepartmentForm from './components/DepartmentForm';
 import Products from './components/Products';
 import Product from './components/Product';
 import ProductForm from './components/ProductForm';
+import styled from 'styled-components';
 
 const App = () => (
-  <>
+  <AppContainer>
     <Navbar />
     <Container>
       <Switch>
@@ -28,7 +29,12 @@ const App = () => (
         <Route component={NoMatch} />
       </Switch>
     </Container>
-  </>
+  </AppContainer>
 );
+
+const AppContainer = styled.div`
+  background: linear-gradient(to bottom, #f5f5f5, #a096b5);
+  min-height: 620px;
+`;
 
 export default App;

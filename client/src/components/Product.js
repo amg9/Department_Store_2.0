@@ -2,6 +2,7 @@ import React from 'react';
 import { Header, Button, } from 'semantic-ui-react';
 import axios from 'axios';
 import ProductForm from './ProductForm';
+import styled from 'styled-components';
 
 class Product extends React.Component {
   state = { 
@@ -42,7 +43,7 @@ class Product extends React.Component {
     return (
       <>
         <Header as="h1">{name}</Header>
-        <p>${price}</p>
+        <StyledPrice>${price}</StyledPrice>
         <p>{description}</p>
         <Button icon="pencil" onClick={this.toggleEdit}/>
         <Button icon="trash" onClick={this.removeProduct}/>
@@ -56,5 +57,9 @@ class Product extends React.Component {
     );
   };
 };
+
+const StyledPrice = styled.h3`
+  color: #5E6181;
+`;
 
 export default Product;
