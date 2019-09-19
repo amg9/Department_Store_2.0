@@ -20,7 +20,7 @@ class DepartmentForm extends React.Component {
     if (this.props.name) {
       this.props.updateDep(this.state.name)
     } else {
-      axios.post('/api/departments', this.state.name)
+      axios.post('/api/departments', this.state)
         .then( res => {
           this.props.history.push('/departments')
         })
