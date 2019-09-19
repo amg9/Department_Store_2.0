@@ -29,6 +29,14 @@ class Product extends React.Component {
     this.setState({ showEdit: !this.state.showEdit, })
   }
 
+  removeProduct = () => {
+    const { department_id, id } = this.state.product;
+    axios.delete(`/api/departments/${department_id}/products/${id}`)
+      .then(
+        this.props.history.push(`/${department_id}/products`)
+      )
+  }
+
   render() {
     const { name, price, description } = this.state.product;
     return (
@@ -37,6 +45,7 @@ class Product extends React.Component {
         <p>${price}</p>
         <p>{description}</p>
         <Button icon="pencil" onClick={this.toggleEdit}/>
+        <Button icon="trash" onClick={this.removeProduct}/>
         { 
           this.state.showEdit ? 
             <ProductForm {...this.state.product} toggleEdit={this.toggleEdit}/> 

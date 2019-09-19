@@ -6,8 +6,9 @@ class DepartmentForm extends React.Component {
   state = { name: "", }
 
   componentDidMount() {
-    if (this.props)
+    if (this.props.name) {
       this.setState({ name: this.props.name })
+    }
   }
 
   handleChange = (e) => {
@@ -16,7 +17,7 @@ class DepartmentForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    if (this.props.id) {
+    if (this.props.name) {
       this.props.updateDep(this.state.name)
     } else {
       axios.post('/api/departments', this.state.name)
