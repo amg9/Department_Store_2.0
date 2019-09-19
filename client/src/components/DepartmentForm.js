@@ -42,6 +42,7 @@ class DepartmentForm extends React.Component {
             placeholder="Department Name"
             value={this.state.name}
             onChange={this.handleChange}
+            required
           />
           <Form.Button color="violet">Submit</Form.Button>
         </Form>
