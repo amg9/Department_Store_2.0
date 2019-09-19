@@ -9,6 +9,7 @@ import Departments from './components/Departments';
 import Department from './components/Department';
 import DepartmentForm from './components/DepartmentForm';
 import Products from './components/Products';
+import Product from './components/Product';
 
 const App = () => (
   <>
@@ -21,6 +22,7 @@ const App = () => (
         <Route exact path="/departments/new" component={DepartmentForm} />
         <Route exact path="/departments/:id" component={Department} />
         <Route exact path="/:department_id/products" component={Products} />
+        <Route exact path="/:department_id/products/:id" component={Product} />
         <Route component={NoMatch} />
       </Switch>
     </Container>

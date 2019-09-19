@@ -22,10 +22,14 @@ class Products extends React.Component {
         <Header as="h1">Products</Header>
         <Card.Group itemsPerRow="4">
           { this.state.products.map( (product) => 
-            <Card as={Link} to={`/products/${product.id}`} key={product.id}>
+            <Card 
+              as={Link} 
+              to={`/${this.props.match.params.department_id}/products/${product.id}`} 
+              key={product.id}
+            >
               <Card.Content>
                 <Card.Header as="h2">{product.name}</Card.Header>
-                <p>{product.price}</p>
+                <p>${product.price}</p>
                 <p>{product.description}</p>
               </Card.Content>
             </Card>
